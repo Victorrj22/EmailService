@@ -48,13 +48,13 @@ public class Repository
     /// </summary>
     /// <param name="produto"></param>
     /// <returns></returns>
-    public bool CheckNotices(Produto produto)
-    {
-        using (var dbContext = new PostgresContext())
-        {
-            return dbContext.Avisos.Any(a => a.Avcodigoproduto == produto.Procodigo);
-        }
-    }
+    // public bool CheckNotices(Produto produto)
+    // {
+    //     using (var dbContext = new PostgresContext())
+    //     {
+    //         return dbContext.Avisos.Any(a => a.Avcodigoproduto == produto.Procodigo);
+    //     }
+    // }
 
     /// <summary>
     /// Adiciona um novo registro de aviso

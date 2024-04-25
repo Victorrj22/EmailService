@@ -17,10 +17,10 @@ public class Service
         var emails = _repositorio.FindEmails();
         foreach (var produto in produtos)
         {
-            var avisoExistente = _repositorio.CheckNotices(produto);
+            //var avisoExistente = _repositorio.CheckNotices(produto);
             var avisoData = _repositorio.FindNoticeDate(produto);
-            var diferencaDeTempo = avisoExistente ? horarioAtual - avisoData!.Avdata : TimeSpan.Zero;
-            if (diferencaDeTempo.TotalMinutes >= 5)
+            var diferencaDeTempo = avisoData != null ? horarioAtual - avisoData!.Avdata : TimeSpan.Zero;
+            if (diferencaDeTempo.TotalMinutes >= 5 || avisoData == null)
             {
                 await _sendEmail.SendGridEmail(produto, emails);
                 _repositorio.AddNotice(produto);

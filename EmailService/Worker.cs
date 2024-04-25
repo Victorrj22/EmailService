@@ -17,7 +17,7 @@ namespace EmailService
             while (!stoppingToken.IsCancellationRequested)
             {
                 _service.StartServiceEmail();
-                await Task.Delay(1000, stoppingToken);
+                await Task.Delay(300000, stoppingToken);
             }
         }
     }
