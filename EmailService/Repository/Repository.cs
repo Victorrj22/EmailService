@@ -10,12 +10,10 @@ public class Repository
     /// <returns></returns>
     public List<string> FindEmails()
     {
-        List<string> emails;
         using (var dbContext = new PostgresContext())
         {
-            emails = dbContext.Configuracaoemails.Select(e => e.Ceemail).ToList();
+            return dbContext.Configuracaoemails.Select(e => e.Ceemail).ToList();
         }
-        return emails;
     }
 
     /// <summary>
@@ -24,12 +22,11 @@ public class Repository
     /// <returns></returns>
     public List<Produto> FindProductToNotice()
     {
-        List<Produto> produtos;
         using (var dbContext = new PostgresContext())
         {
-            produtos = dbContext.Produtos.Where(p => p.Proqtdestoque < p.Proqtdavisa).ToList();
+            return dbContext.Produtos.Where(p => p.Proqtdestoque < p.Proqtdavisa).ToList();
         }
-        return produtos;
+
     }
 
     /// <summary>
@@ -39,13 +36,11 @@ public class Repository
     /// <returns></returns>
     public Aviso? FindNoticeDate(Produto produto)
     {
-        Aviso? avisoData;
         using (var dbContext = new PostgresContext())
         {
-            avisoData = dbContext.Avisos.Where(a => a.Avcodigoproduto == produto.Procodigo)
+            return dbContext.Avisos.Where(a => a.Avcodigoproduto == produto.Procodigo)
                 .OrderByDescending(a => a.Avdata).FirstOrDefault();
         }
-        return avisoData;
     }
 
     /// <summary>
@@ -55,12 +50,10 @@ public class Repository
     /// <returns></returns>
     public bool CheckNotices(Produto produto)
     {
-        bool avisoExistente;
         using (var dbContext = new PostgresContext())
         {
-            avisoExistente = dbContext.Avisos.Any(a => a.Avcodigoproduto == produto.Procodigo);
+            return dbContext.Avisos.Any(a => a.Avcodigoproduto == produto.Procodigo);
         }
-        return avisoExistente;
     }
 
     /// <summary>
