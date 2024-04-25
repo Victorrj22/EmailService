@@ -44,19 +44,6 @@ public class Repository
     }
 
     /// <summary>
-    /// Verifica se existem avisos
-    /// </summary>
-    /// <param name="produto"></param>
-    /// <returns></returns>
-    // public bool CheckNotices(Produto produto)
-    // {
-    //     using (var dbContext = new PostgresContext())
-    //     {
-    //         return dbContext.Avisos.Any(a => a.Avcodigoproduto == produto.Procodigo);
-    //     }
-    // }
-
-    /// <summary>
     /// Adiciona um novo registro de aviso
     /// </summary>
     /// <param name="produto"></param>

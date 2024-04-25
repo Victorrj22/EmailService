@@ -17,7 +17,6 @@ public class Service
         var emails = _repositorio.FindEmails();
         foreach (var produto in produtos)
         {
-            //var avisoExistente = _repositorio.CheckNotices(produto);
             var avisoData = _repositorio.FindNoticeDate(produto);
             var diferencaDeTempo = avisoData != null ? horarioAtual - avisoData!.Avdata : TimeSpan.Zero;
             if (diferencaDeTempo.TotalMinutes >= 5 || avisoData == null)
